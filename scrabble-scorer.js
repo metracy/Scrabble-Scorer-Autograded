@@ -98,16 +98,23 @@ function scorerPrompt() {
    console.log("1 - ", scoringAlgorithms[1].name, ": ", scoringAlgorithms[1].description);
    console.log("2 - ", scoringAlgorithms[2].name, ": ", scoringAlgorithms[2].description);
    // ask user for 0 1 or 2 for which algorithm they want and based on 0, 1, or 2 use if and else ifs to write the respective object over the string choice and return the object 
-   choice = input.question("0, 1, or 2: ");
-   if (choice == '0') {
-      choice = scoringAlgorithms[0];
+   
+   while (typeof choice != "object"){
+      choice = input.question("0, 1, or 2: ");
+      if (choice == '0') {
+         choice = scoringAlgorithms[0];
+      }
+      else if (choice == '1') {
+         choice = scoringAlgorithms[1];
+      }
+      else if (choice == '2') {
+         choice = scoringAlgorithms[2];
+      }
+      else {
+         console.log('Please select a valid choice 0, 1 or 2')
+      }
    }
-   else if (choice == '1') {
-      choice = scoringAlgorithms[1];
-   }
-   else if (choice == '2') {
-      choice = scoringAlgorithms[2];
-   }
+   
    return choice;
 }
 
@@ -129,6 +136,8 @@ function transform(old) {
 function runProgram() {
    newWord = initialPrompt();
    choice = scorerPrompt();
+   // use local version of newPointStructure in runProgram() with added key ' ' = 0
+   newPointStructure[' '] = 0;
    console.log(`Points for '${newWord}': ' ${choice.scorerFunction(newWord)}`)
 }
 
