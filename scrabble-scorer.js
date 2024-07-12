@@ -43,7 +43,10 @@ function simpleScorer (word) {
    let value = 0;
    // for .. in only works in objects, to iterate through a string or array use of
    for (const letter of word) {
-      value += 1;
+      // 0 for blank
+      if (letter != ' ') {
+         value += 1;
+      }
    }
    return value;
 }
@@ -56,6 +59,9 @@ function vowelBonusScorer (word) {
       if (vowels.includes(letter)) {
          value += 3;
       }
+      else if ([' '].includes(letter)) {
+         value += 0;
+      }
       else {
          value += 1;
       }
@@ -67,7 +73,13 @@ function scrabbleScorer (word) {
    let value = 0;
    word = word.toLowerCase();
    for (const letter of word) {
-      value += newPointStructure[letter]
+      if (letter == ' '){
+         value += newPointStructure[letter]
+      }
+      else {
+         value += newPointStructure[letter];
+      }
+      
    }
    return value;
 };
