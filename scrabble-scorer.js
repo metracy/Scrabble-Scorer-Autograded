@@ -60,12 +60,13 @@ function vowelBonusScorer (word) {
          value += 3;
       }
       else if ([' '].includes(letter)) {
+         // change nothing.
          value += 0;
       }
       else {
          value += 1;
       }
-   };
+   }
    return value;
 }
 
@@ -74,7 +75,7 @@ function scrabbleScorer (word) {
    word = word.toLowerCase();
    for (const letter of word) {
       if (letter == ' '){
-         value += newPointStructure[letter]
+         value += newPointStructure[letter];
       }
       else {
          value += newPointStructure[letter];
@@ -82,7 +83,7 @@ function scrabbleScorer (word) {
       
    }
    return value;
-};
+}
 
 const scoringAlgorithms = [
    {
