@@ -151,7 +151,7 @@ function runProgram() {
    choice = scorerPrompt();
    // use local version of newPointStructure in runProgram() with added key ' ' = 0
    newPointStructure[' '] = 0;
-   console.log(`Points for '${newWord}': ' ${choice.scorerFunction(newWord)}`)
+   console.log(`Points for ${newWord}: ${choice.scorerFunction(newWord)}`)
 }
 
 // Don't write any code below this line //
